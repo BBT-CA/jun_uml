@@ -1,0 +1,11 @@
+window_sizes 1310 744 293 1011 550 120
+diagrams
+  active  classdiagram_ref 128002 // list_iterator
+    1017 550 100 4 0 0
+end
+show_stereotypes
+selected class_ref 147970 // ListIterator
+open
+  class_ref 128002 // List
+end
+end
