@@ -1,0 +1,16 @@
+window_sizes 1310 744 293 1011 550 120
+diagrams
+  active  classdiagram_ref 128002 // list_iterator
+    1017 550 100 4 0 0
+end
+show_stereotypes
+open
+  class_ref 128002 // List
+  class_ref 128130 // Iterator
+  class_ref 128386 // Node
+  class_ref 141442 // SortDoubleLinkedList
+  class_ref 154498 // SingleLinkedList
+  class_ref 154626 // DoubleLinkedList
+  class_ref 154882 // CircleNode
+end
+end
