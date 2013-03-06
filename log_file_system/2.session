@@ -1,0 +1,14 @@
+window_sizes 1310 744 320 984 550 120
+diagrams
+  active  classdiagram_ref 128130 // log
+    763 382 100 4 0 0
+end
+show_stereotypes
+selected 
+  package_ref 129 // log_file_system
+open
+  attribute_ref 141058 // filter_
+  class_ref 128386 // TextList
+  class_ref 128642 // Animation
+end
+end

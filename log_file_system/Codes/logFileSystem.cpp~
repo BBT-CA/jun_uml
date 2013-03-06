@@ -1,0 +1,84 @@
+#include<iostream>
+ 
+using namespace std;
+ 
+class logLibrary 
+{
+   private:
+
+ 
+   public:
+ 
+      void insert
+      {
+         /* to do */
+      }
+ 
+      void delete
+      {
+         /* to do */
+      }
+}
+
+class GUIBase : public class logLibrary 
+{
+   private:
+
+ 
+   public:
+ 
+      void GUIInsert
+      {
+		insert();
+		GUIView();
+      }
+ 
+      void GUIDelete
+      {
+        delete();
+		GUIView();
+      }
+
+      virtual void GUIView () = 0;
+
+}
+
+class binaryTree : public GUIBase
+{
+   private:
+
+ 
+   public:
+ 
+      void GUIView
+	  {
+        /* to do */
+      }
+}
+
+class linkList : public GUIBase
+{
+   private:
+
+ 
+   public:
+ 
+      void GUIView
+	  {
+        /* to do */
+      }
+}
+
+class animation : public GUIBase
+{
+   private:
+
+ 
+   public:
+ 
+      void GUIView
+	  {
+        /* to do */
+      }
+}
+

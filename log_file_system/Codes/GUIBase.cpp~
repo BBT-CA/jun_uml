@@ -1,0 +1,26 @@
+#include<iostream>
+ 
+using namespace std;
+ 
+class GUIBase : public class logLibrary 
+{
+   private:
+
+ 
+   public:
+ 
+      void GUIInsert
+      {
+		insert();
+		GUIView();
+      }
+ 
+      void GUIDelete
+      {
+        delete();
+		GUIView();
+      }
+
+      virtual void GUIView ();
+
+}

@@ -1,0 +1,2 @@
+void insert();	/* insert new log in specific position */
+void delete();  /* delete log */
