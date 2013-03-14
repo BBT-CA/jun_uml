@@ -1,6 +1,6 @@
-format 74
+format 76
 "abstract_list"
-  revision 22
+  revision 28
   modified_by 2 "jun"
 
 
@@ -14,7 +14,7 @@ format 74
   //sequence diagram settings
   show_full_operations_definition no write_horizontally yes class_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties no show_class_context_mode no show_msg_context_mode no
   //collaboration diagram settings
-  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no show_msg_context no draw_all_relations yes shadow yes show_stereotype_properties no
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes class_drawing_mode natural drawing_language uml package_name_in_tab no show_context no show_msg_context no draw_all_relations yes shadow yes show_stereotype_properties no
   //object diagram settings
    write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes show_stereotype_properties no
   //component diagram settings
@@ -34,13 +34,15 @@ format 74
   font_size 9
   diagram_format A4
 
+  image_root_dir ""
+
   mark_for_import
   
   classview 128002 "list_iterator"
     //class diagram settings
     draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
     //collaboration diagram settings
-    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
     //object diagram settings
      write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
     //sequence diagram settings
@@ -166,6 +168,15 @@ ${inlines}
 	
 	
       end
+
+      classrelation 217602 // <directional aggregation>
+	relation 216194 o-->
+	  a role_name "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 217602 // <directional aggregation>
+	  b parent class_ref 147970 // ListIterator
+      end
     end
 
     class 128130 "Iterator"
@@ -221,124 +232,6 @@ ${inlines}
       end
     end
 
-    class 128386 "Node"
-      visibility package 
-      cpp_decl "${comment}${template}class ${name}${inherit} {
-${members}};
-${inlines}
-"
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      operation 155266 "addAfter"
-	public explicit_return_type "void"
-	nparams 2
-	  param in name "node" type class_ref 128386 // Node
-	  param in name "value" explicit_type "int"
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	
-	comment "add the next node"
-      end
-
-      operation 209282 "addBefore"
-	public explicit_return_type ""
-	nparams 3
-	  param in name "node" type class_ref 128386 // Node
-	  param in name "value" explicit_type ""
-	  param in name "" explicit_type "int"
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	
-      end
-
-      operation 182658 "remove"
-	public explicit_return_type ""
-	nparams 0
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	
-	comment "remove node from list"
-      end
-
-      operation 162562 "get"
-	public explicit_return_type "int"
-	nparams 1
-	  param in name "" type class_ref 128386 // Node
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	
-	comment "get data"
-      end
-
-      classrelation 155906 // <directional composition>
-	relation 155138 *-->
-	  a role_name "" multiplicity "data_" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
-"
-	    classrelation_ref 155906 // <directional composition>
-	  b parent class_ref 134914 // Data
-      end
-
-      classrelation 175874 // next_ (<association>)
-	relation 174978 ----
-	  a role_name "next_" private
-	    comment "next node of current"
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 175874 // next_ (<association>)
-	  b role_name "" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 176002 // <association>
-      end
-
-      classrelation 176002 // <association>
-	relation_ref 174978 // <association>
-      end
-
-      operation 222722 "next"
-	public return_type class_ref 128386 // Node
-	nparams 0
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	
-      end
-    end
-
     class 134914 "Data"
       visibility package 
       cpp_decl "${comment}${template}class ${name}${inherit} {
@@ -379,6 +272,106 @@ ${inlines}
 	comment "set value"
       end
 
+      class 128386 "Node"
+	visibility protected 
+	cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+	java_decl ""
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	
+	operation 155266 "addAfter"
+	  public explicit_return_type "void"
+	  nparams 2
+	    param in name "node" type class_ref 128386 // Node
+	    param in name "value" explicit_type "int"
+	  cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	  cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  
+	  comment "add the next node"
+	end
+
+	operation 182658 "remove"
+	  public explicit_return_type ""
+	  nparams 0
+	  cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	  cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  
+	  comment "remove node from list"
+	end
+
+	operation 162562 "get"
+	  public explicit_return_type "int"
+	  nparams 1
+	    param in name "" type class_ref 128386 // Node
+	  cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	  cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  
+	  comment "get data"
+	end
+
+	classrelation 155906 // <directional composition>
+	  relation 155138 *-->
+	    a role_name "" multiplicity "data_" private
+	      cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	      classrelation_ref 155906 // <directional composition>
+	    b parent class_ref 134914 // Data
+	end
+
+	operation 222722 "next"
+	  public return_type class_ref 128386 // Node
+	  nparams 0
+	  cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	  cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  
+	end
+
+	classrelation 237954 // next_ (<association>)
+	  relation 236290 ----
+	    a role_name "next_" private
+	      cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	      classrelation_ref 237954 // next_ (<association>)
+	    b role_name "" private
+	      cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	      classrelation_ref 238082 // <association>
+	end
+
+	classrelation 238082 // <association>
+	  relation_ref 236290 // <association>
+	end
+      end
+
       operation 162434 "get"
 	public explicit_return_type "int"
 	nparams 0
@@ -394,12 +387,12 @@ ${inlines}
 	comment "get value"
       end
 
-      classrelation 202370 // <directional aggregation>
+      classrelation 202370 // data_ (<directional aggregation>)
 	relation 201346 o-->
-	  a role_name "" private
+	  a role_name "data_" private
 	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
 "
-	    classrelation_ref 202370 // <directional aggregation>
+	    classrelation_ref 202370 // data_ (<directional aggregation>)
 	  b parent class_ref 128386 // Node
       end
     end
@@ -416,14 +409,6 @@ ${inlines}
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 169218 // <generalisation>
-	relation 168322 ---|>
-	  a public
-	    cpp default "${type}"
-	    classrelation_ref 169218 // <generalisation>
-	  b parent class_ref 128002 // List
-      end
-
       operation 222594 "locate"
 	protected explicit_return_type ""
 	nparams 0
@@ -438,14 +423,12 @@ ${inlines}
 	
       end
 
-      classrelation 211074 // head_ (<directional composition>)
-	relation 209666 *-->
-	  a role_name "head_" private
-	    comment "head of sorted double-linked list"
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
-"
-	    classrelation_ref 211074 // head_ (<directional composition>)
-	  b parent class_ref 154882 // CircleNode
+      classrelation 224258 // <generalisation>
+	relation 222850 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 224258 // <generalisation>
+	  b parent class_ref 128002 // List
       end
     end
 
@@ -480,7 +463,7 @@ ${inlines}
 	comment "current node"
       end
 
-      attribute 142082 "head_"
+      attribute 142082 "iHead_"
 	private type class_ref 128386 // Node
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
 "
@@ -552,41 +535,34 @@ ${inlines}
 	  b parent class_ref 128002 // List
       end
 
-      classrelation 209922 // <directional composition>
-	relation 208642 *-->
-	  a role_name "" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+      operation 242818 "add"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "value" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
 "
-	    classrelation_ref 209922 // <directional composition>
-	  b parent class_ref 154754 // SingleNode
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
       end
 
-      classrelation 210562 // <directional composition>
-	relation 209154 *-->
-	  a role_name "" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+      operation 242946 "remove"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "value" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
 "
-	    classrelation_ref 210562 // <directional composition>
-	  b parent class_ref 154754 // SingleNode
-      end
-
-      classrelation 210690 // <directional composition>
-	relation 209282 *-->
-	  a role_name "" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
 "
-	    classrelation_ref 210690 // <directional composition>
-	  b parent class_ref 154754 // SingleNode
-      end
-
-      classrelation 210818 // head_ (<directional composition>)
-	relation 209410 *-->
-	  a role_name "head_" private
-	    comment "head of single-linked list"
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
-"
-	    classrelation_ref 210818 // head_ (<directional composition>)
-	  b parent class_ref 154754 // SingleNode
+	
+	
+	
+	
       end
     end
 
@@ -602,112 +578,45 @@ ${inlines}
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 209026 // <generalisation>
-	relation 208002 ---|>
+      classrelation 224386 // <generalisation>
+	relation 222978 ---|>
 	  a public
 	    cpp default "${type}"
-	    classrelation_ref 209026 // <generalisation>
+	    classrelation_ref 224386 // <generalisation>
 	  b parent class_ref 128002 // List
       end
 
-      classrelation 210946 // head_ (<directional composition>)
-	relation 209538 *-->
-	  a role_name "head_" private
-	    comment "head of double-linked list"
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
-"
-	    classrelation_ref 210946 // head_ (<directional composition>)
-	  b parent class_ref 154882 // CircleNode
-      end
-    end
-
-    class 154754 "SingleNode"
-      visibility package 
-      cpp_decl "${comment}${template}class ${name}${inherit} {
-${members}};
-${inlines}
-"
-      java_decl ""
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 209154 // <generalisation>
-	relation 208130 ---|>
-	  a public
-	    cpp default "${type}"
-	    classrelation_ref 209154 // <generalisation>
-	  b parent class_ref 128386 // Node
-      end
-
-      classrelation 209282 // <association>
-	relation 208258 ----
-	  a role_name "" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 209282 // <association>
-	  b role_name "" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 209410 // <association>
-      end
-
-      classrelation 209410 // <association>
-	relation_ref 208258 // <association>
-      end
-
-      classrelation 209538 // next_ (<association>)
-	relation 208386 ----
-	  a role_name "next_" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 209538 // next_ (<association>)
-	  b role_name "" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 209666 // <association>
-      end
-
-      classrelation 209666 // <association>
-	relation_ref 208386 // <association>
-      end
-
-      operation 222978 "addAfter"
+      operation 243074 "add"
 	public explicit_return_type ""
-	nparams 2
-	  param in name "node" type class_ref 128386 // Node
+	nparams 1
 	  param in name "value" explicit_type "int"
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
   ${body}}
 "
 	
 	
 	
 	
-	comment "add node after current"
       end
 
-      operation 223106 "addBefore"
+      operation 243202 "remove"
 	public explicit_return_type ""
-	nparams 2
-	  param in name "node" type class_ref 128386 // Node
+	nparams 1
 	  param in name "value" explicit_type "int"
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
   ${body}}
 "
 	
 	
 	
 	
-	comment "add node before current"
       end
 
-      operation 223234 "remove"
+      operation 243330 "createIterator"
 	public explicit_return_type ""
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
@@ -719,11 +628,10 @@ ${inlines}
 	
 	
 	
-	comment "remove current node"
       end
     end
 
-    class 154882 "CircleNode"
+    class 161154 "CircleNode"
       visibility package 
       cpp_decl "${comment}${template}class ${name}${inherit} {
 ${members}};
@@ -735,7 +643,23 @@ ${inlines}
       idl_decl ""
       explicit_switch_type ""
       
-      operation 223362 "addAfter"
+      operation 236034 "addAfter"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "node" type class_ref 128386 // Node
+	  param in name "value" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, ${t1} ${p1}, ${t2} ${p2}${v2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 236162 "addBefore"
 	public explicit_return_type ""
 	nparams 2
 	  param in name "node" type class_ref 128386 // Node
@@ -749,27 +673,9 @@ ${inlines}
 	
 	
 	
-	comment "add node after current"
       end
 
-      operation 223490 "addBefore"
-	public explicit_return_type ""
-	nparams 2
-	  param in name "node" type class_ref 128386 // Node
-	  param in name "value" explicit_type "int"
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	
-	comment "add node before current"
-      end
-
-      operation 223618 "remove"
+      operation 236290 "remove"
 	public explicit_return_type ""
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
@@ -781,32 +687,29 @@ ${inlines}
 	
 	
 	
-	comment "remove current node"
       end
 
-      classrelation 210050 // next_ (<association>)
-	relation 208770 ----
-	  a role_name "next_" private
-	    comment "next node of current"
+      classrelation 231170 // prev_ (<association>)
+	relation 229634 ----
+	  a role_name "prev_" private
 	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
 "
-	    classrelation_ref 210050 // next_ (<association>)
-	  b role_name "prev_" private
-	    constraint "previous node of current"
+	    classrelation_ref 231170 // prev_ (<association>)
+	  b role_name "next_" private
 	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
 "
-	    classrelation_ref 210178 // prev_ (<association>)
+	    classrelation_ref 231298 // next_ (<association>)
       end
 
-      classrelation 210178 // prev_ (<association>)
-	relation_ref 208770 // <association>
+      classrelation 231298 // next_ (<association>)
+	relation_ref 229634 // <association>
       end
 
-      classrelation 210306 // <generalisation>
-	relation 208898 ---|>
+      classrelation 237826 // <generalisation>
+	relation 236162 ---|>
 	  a public
 	    cpp default "${type}"
-	    classrelation_ref 210306 // <generalisation>
+	    classrelation_ref 237826 // <generalisation>
 	  b parent class_ref 128386 // Node
       end
     end
